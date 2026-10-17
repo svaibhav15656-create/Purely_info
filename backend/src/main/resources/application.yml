@@ -1,0 +1,33 @@
+server:
+  port: ${SERVER_PORT:8080}
+  error:
+    include-message: never
+    include-stacktrace: never
+spring:
+  security:
+    user:
+      name: ${ADMIN_USERNAME:admin}
+      password: ${ADMIN_PASSWORD:local-admin-change-me}
+      roles: ADMIN
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/investor_portal}
+    username: ${SPRING_DATASOURCE_USERNAME:portal}
+    password: ${SPRING_DATASOURCE_PASSWORD:portal-local-only}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+  mail:
+    host: ${SMTP_HOST:localhost}
+    port: ${SMTP_PORT:587}
+management:
+  endpoints:
+    enabled-by-default: false
+sources:
+  defaults-enabled: false
+  timeout-ms: 10000
+  cache-seconds: 3600
+  schedule-delay-ms: 3600000
+  initial-delay-ms: 30000
